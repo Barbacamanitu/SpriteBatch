@@ -12,6 +12,8 @@ public:
 	bool isOpen();
 	void Close();
 	void MainLoop();
+	void preRender();
+	void postRender();
 private:
 	void Destroy();
 	bool mIsOpen;

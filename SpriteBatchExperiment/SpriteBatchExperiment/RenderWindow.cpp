@@ -21,7 +21,7 @@ void RenderWindow::HandleEvents()
 
 bool RenderWindow::isOpen()
 {
-	return mIsOpen;
+	return !glfwWindowShouldClose(window);
 }
 
 void RenderWindow::Close()
@@ -48,6 +48,21 @@ void RenderWindow::MainLoop()
 		glfwPollEvents();
 
 	}
+}
+
+void RenderWindow::preRender()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void RenderWindow::postRender()
+{
+	/* Swap front and back buffers */
+	glfwSwapBuffers(window);
+
+
+
+	glfwPollEvents();
 }
 
 void RenderWindow::Initialize()
